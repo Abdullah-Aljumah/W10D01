@@ -6,7 +6,8 @@ export async function getStaticProps() {
   return { props: { posts } };
 }
 
-const posts = ({ posts }) => {
+const Posts = ({ posts }) => {
+  // react-hooks/rules-of-hooks
   const router = useRouter();
 
   const postPage = (id) => {
@@ -17,8 +18,12 @@ const posts = ({ posts }) => {
     <div>
       {posts.map((item) => {
         return (
-          <div key={item.id} onClick={() => postPage(item.id)}>
-            <h3 >{item.title}</h3>
+          <div
+            key={item.id}
+            onClick={() => postPage(item.id)}
+            style={{ cursor: "pointer" }}
+          >
+            <h3>{item.title}</h3>
             <p>{item.body}</p>
             <hr />
           </div>
@@ -28,4 +33,4 @@ const posts = ({ posts }) => {
   );
 };
 
-export default posts;
+export default Posts;

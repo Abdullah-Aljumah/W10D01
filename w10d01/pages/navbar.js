@@ -3,19 +3,20 @@ const Navbar = () => {
   return (
     <div>
       <ul>
-        <Link href="/home">
+        <Link href="/home" passHref>
           <li>Home</li>
         </Link>
-        <Link href="/contact">
+        <Link href="/contact" passHref>
           <li>Contact</li>
         </Link>
-        <Link href="/about">
+        <Link href="/about" passHref>
           <li>About</li>
         </Link>
-        <Link href="/posts">
+        <Link href="/posts" passHref>
           <li>Posts</li>
         </Link>
       </ul>
+      <hr />
     </div>
   );
 };

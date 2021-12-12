@@ -14,3 +14,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  cursor: pointer;
+}
