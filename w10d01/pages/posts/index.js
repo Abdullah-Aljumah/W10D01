@@ -1,39 +1,26 @@
-// export async function getStaticPaths() {
-//   const res = await fetch("https://jsonplaceholder.typicode.com/posts")
-//   const posts = await res.json();
-
-//   const paths = posts.map((post) => ({
-//     params: { id: post.id },
-//   }));
-//   return { paths, fallback: false };
-// }
-
-//   // We'll pre-render only these paths at build time.
-//   // { fallback: false } means other routes should 404.
-//   return { paths, fallback: false };
-// }
-
+import { useRouter } from "next/router";
 // This also gets called at build time
 export async function getStaticProps() {
-
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   const posts = await res.json();
   return { props: { posts } };
 }
 
-
-
 const posts = ({ posts }) => {
-  const postPage = () => {
-  
-  }
+  const router = useRouter();
+
+  const postPage = (id) => {
+    router.push(`/posts/${id}`);
+  };
+
   return (
     <div>
       {posts.map((item) => {
         return (
-          <div key={item.id}>
-            <h3 onClick={postPage}>{item.title}</h3>
+          <div key={item.id} onClick={() => postPage(item.id)}>
+            <h3 >{item.title}</h3>
             <p>{item.body}</p>
+            <hr />
           </div>
         );
       })}
